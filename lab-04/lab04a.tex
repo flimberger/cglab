@@ -1,0 +1,40 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\begin{document}
+
+\title{Labor 4}
+\author{Daniel Bälz, Fabian Freimüller, Florian Limberger}
+\date{\today}
+
+\maketitle
+
+\section{Aufgabe 1}
+
+Der Gödelarm hat die Länge $l=4,5m$, an dessen Ende ein Stützrad mit dem Radius $r=1,2m$ angebracht ist. Die Winkelgeschwindigkeit, mit der sich der Gödelarm dreht, beträgt
+$$\omega = \frac{2 \times \pi}{60s}$$
+
+Der Umfang des Stützrades beträgt
+$$U = 2 \times \pi \times r = 2 \times \pi \times 1,2m = \pi \times 2,4m \approx 7,53m$$
+
+Bei einer $360^{\circ}$-Drehung des Rades wird genau der Umfang des Rades als Kreisbogen zurückgelegt. Der dabei überstrichene Winkel $\alpha$ kann mit der Formel
+$$\alpha = \frac{180 \times b}{\pi \times r}$$
+berechnet werden. Für die Länge des Gödelarms ergibt sich dann ein überstrichener Winkel von $360^{\circ}$.
+
+Daraus folgt, dass das Stützrad fur jedes Grad, um das der Gödelarm gedreht wird, um $\frac{360^{\circ}}{\alpha}$ rotiert, im konkreten Fall also um $1^{\circ}$.
+
+Wenn nun eine Winkelgeschwindigkeit $\omega$ und eine Zeit $t$ gegeben sind, und man annimmt, dass sowohl der Gödelarm als auch das Stützrad zum Zeitpunkt $t_{0} = 0$ um $0^{\circ}$ rotiert waren, dann kann man die Rotation $r_{G}$ des Gödelarms mit
+$$r_{G} = \frac{\omega \times t \times 180}{\pi}$$
+und die Rotation $r_{S}$ des Stützrades mit
+$$r_{S} = \frac{r_{G} \times 360^{\circ}}{\alpha}$$
+berechnen.
+
+Nun sei $f: N^2 \rightarrow N^2$ eine Funktion mit
+$$f(t, \omega) = (r_{G}, r_{S})$$
+welches unsere gesuchte Funktion ist.
+
+\end{document}
+

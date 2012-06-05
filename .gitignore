@@ -1,0 +1,7 @@
+*.o
+*.aux
+*.log
+*.pdf
+lab04?
+*.tar.bz2
+*~
