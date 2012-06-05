@@ -40,8 +40,8 @@ doc: ${DOC}
 clean:
 	rm -f ${OUT} ${OBJ} ${DOC} ${DOC:.pdf=.aux} ${DOC:.pdf=.log} ${NAME}.tar.bz2
 
-dist: clean
+dist: all
 	mkdir -p ${NAME}
-	cp ${SRC} ${DOCSRC} Makefile ${NAME}
+	cp ${OUT} ${DOC} ${SRC} ${DOCSRC} Makefile ${NAME}
 	tar -cjf ${NAME}.tar.bz2 ${NAME}
 	rm -rf ${NAME}
