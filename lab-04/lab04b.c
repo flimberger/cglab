@@ -179,8 +179,7 @@ drawscene(void)
 
 	/* goepel arm */
 	glPushMatrix();
-	//glColor3d(0.0, 0.6, 0.0);
-	glRotated(-goepelang, 0.0, 1.0, 0.0);
+	glRotated(goepelang, 0.0, 1.0, 0.0);
 	glBegin(GL_QUADS);
 	glNormal3d(0.0, -1.0, 0.0);
 	glVertex3d(-goepelrad, -goepelrad, 0.0);
@@ -211,9 +210,9 @@ drawscene(void)
 	/* wheel */
 	glPushMatrix();
 	glColor3d(0.2, 0.2, 0.2);
-	glRotated(-goepelang, 0.0, 1.0, 0.0);
+	glRotated(goepelang, 0.0, 1.0, 0.0);
 	glTranslated(0.0, 0.0, -goepellen);
-	glRotated(-wheelang, 0.0, 0.0, 1.0);
+	glRotated(wheelang, 0.0, 0.0, 1.0);
 
 	glBegin(GL_TRIANGLE_FAN);
 	glNormal3d(0.0, 0.0, 1.0);

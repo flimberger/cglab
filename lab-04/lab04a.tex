@@ -18,7 +18,8 @@
 
 \maketitle
 
-\section{Aufgabe 1}
+\section{Aufgabe 4a}
+\subsection{Funktion}
 
 Der Göpelarm hat die Länge $l=4,5m$, an dessen Ende ein Stützrad mit dem Radius $r=1,2m$ angebracht ist. Die Winkelgeschwindigkeit, mit der sich der Göpelarm dreht, beträgt
 $$\omega = \frac{2 \times \pi}{60s}$$
@@ -41,6 +42,70 @@ berechnen.
 Nun sei $f: N^2 \rightarrow N^2$ eine Funktion mit
 $$f(t, \omega) = (r_{G}, r_{S})$$
 welches unsere gesuchte Funktion ist.
+
+\subsection{Matrizen}
+Die Rotationsmatrix in z-Richtung ist $R_{z} = \left[\begin{array}{ c c c c }
+cos \gamma & sin \gamma & 0 & 0 \\
+-sin \gamma & cos \gamma & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right]$ für den Winkel $\gamma$ und in y-Richtung
+$R_{y} = \left[\begin{array}{ c c c c }
+cos \beta & 0 & -sin \beta & 0 \\
+0 & 1 & 0 & 0 \\
+sin \beta & 0 & cos \beta & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right]$ für den Winkel $\beta$. Die Translation um die Länge l in
+z-Richtung wird durch den Vektor $t_{z} = \left[\begin{array}{ c c c c }
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & l \\
+0 & 0 & 0 & 1
+\end{array}\right]$ erreicht.
+
+Da sich das Rad im Kreis drehen soll, muss es als erstes um den Winkel des
+Göpelarms rotiert werden. Dann können die Translation auf und die Rotation um
+die z-Achse angewendet werden. Die führt zu folgender Gleichung:
+\begin{eqnarray}
+P' & = & P \times R_{y} \times T_{z} \times R_{z} \nonumber \\
+& = & P \times \left(\begin{array}{ c c c c }
+\mbox{cos} \beta & 0 & - \mbox{sin} \beta & 0 \\
+0 & 1 & 0 & 0 \\
+\mbox{sin} \beta & 0 & \mbox{cos} \beta & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right) \times \left(\begin{array}{ c c c c }
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & l \\
+0 & 0 & 0 & 1
+\end{array} \right) \times \left(\begin{array}{ c c c c }
+\mbox{cos} \gamma & \mbox{sin} \gamma & 0 & 0 \\
+- \mbox{sin} \gamma & \mbox{cos} \gamma & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right) \nonumber \\
+& = & P \times \left(\begin{array}{ c c c c }
+\mbox{cos} \beta & 0 & - \mbox{sin} \beta & - \mbox{sin} \beta \times l \\
+0 & 1 & 0 & 0 \\
+\mbox{sin} \beta & 0 & \mbox{cos} \beta & \mbox{cos} \beta \times l \\
+0 & 0 & 0 & 1
+\end{array} \right) \times \left(\begin{array}{ c c c c }
+\mbox{cos} \gamma & \mbox{sin} \gamma & 0 & 0 \\
+- \mbox{sin} \gamma & \mbox{cos} \gamma & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{array} \right) \nonumber \\
+& = & P \times \left(\begin{array}{ c c c c }
+\mbox{cos} \beta \times \mbox{cos} \gamma &
+\mbox{cos} \beta \times \mbox{sin} \gamma &
+- \mbox{sin} \beta & - \mbox{sin} \beta \times l \\
+- \mbox{sin} \gamma & \mbox{cos} \gamma & 0 & 0 \\
+\mbox{sin} \beta \times \mbox{cos} \gamma &
+\mbox{sin} \beta \times \mbox{sin} \gamma &
+\mbox{cos} \beta & \mbox{cos} \beta \times l \\
+0 & 0 & 0 & 1
+\end{array} \right)
+\end{eqnarray}
 
 \end{document}
 
