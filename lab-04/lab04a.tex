@@ -21,47 +21,78 @@
 \section{Aufgabe 4a}
 \subsection{Funktion}
 
-Der Göpelarm hat die Länge $l=4,5m$, an dessen Ende ein Stützrad mit dem Radius $r=1,2m$ angebracht ist. Die Winkelgeschwindigkeit, mit der sich der Göpelarm dreht, beträgt
-$$\omega = \frac{2 \times \pi}{60s}$$
+Der Göpelarm hat die Länge $l=4,5m$, an dessen Ende ein Stützrad mit dem Radius
+$r=1,2m$ angebracht ist. Die Winkelgeschwindigkeit, mit der sich der Göpelarm
+dreht, beträgt $\omega = \frac{2 \times \pi}{60s}$
 
 Der Umfang des Stützrades beträgt
-$$U = 2 \times \pi \times r = 2 \times \pi \times 1,2m = \pi \times 2,4m \approx 7,53m$$
+\begin{eqnarray}
+U & = & 2 \times \pi \times r \nonumber \\
+& = & 2 \times \pi \times 1,2m \nonumber \\
+& = & \pi \times 2,4m \nonumber \\
+& \approx & 7,53m
+\end{eqnarray}
 
-Bei einer $360^{\circ}$-Drehung des Rades wird genau der Umfang des Rades als Kreisbogen zurückgelegt. Der dabei überstrichene Winkel $\alpha$ kann mit der Formel
-$$\alpha = \frac{180 \times b}{\pi \times r}$$
-berechnet werden. Für die Länge des Göpelarms ergibt sich dann ein überstrichener Winkel von $95.93^{\circ}$.
+Bei einer $360^{\circ}$-Drehung des Rades wird genau der Umfang des Rades als
+Kreisbogen zurückgelegt. Der dabei überstrichene Winkel $\alpha$ kann mit der
+Formel
+\begin{equation}
+\alpha = \frac{180 \times U}{\pi \times l}
+\end{equation}
+berechnet werden. Für die Länge des Göpelarms ergibt sich dann ein
+überstrichener Winkel von $95.93^{\circ}$.
 
-Daraus folgt, dass das Stützrad fur jedes Grad, um das der Göpelarm gedreht wird, um $\frac{360^{\circ}}{\alpha}$ rotiert, im konkreten Fall also um $3.75^{\circ}$.
+Daraus folgt, dass das Stützrad fur jedes Grad, um das der Göpelarm gedreht
+wird, um $\frac{360^{\circ}}{\alpha}$ rotiert, im konkreten Fall also um
+$3.75^{\circ}$.
 
-Wenn nun eine Winkelgeschwindigkeit $\omega$ und eine Zeit $t$ gegeben sind, und man annimmt, dass sowohl der Göpelarm als auch das Stützrad zum Zeitpunkt $t_{0} = 0$ um $0^{\circ}$ rotiert waren, dann kann man die Rotation $r_{G}$ des Göpelarms mit
-$$r_{G} = \frac{\omega \times t \times 180}{\pi}$$
-und die Rotation $r_{S}$ des Stützrades mit
-$$r_{S} = \frac{r_{G} \times 360^{\circ}}{\alpha}$$
-berechnen.
+Wenn nun eine Winkelgeschwindigkeit $\omega$ gegeben ist und man annimmt, dass
+sowohl der Göpelarm als auch das Stützrad zum Zeitpunkt $t_{0} = 0$ um
+$0^{\circ}$ rotiert sind, dann kann man die Rotationen als Funktionen von
+$r: N \rightarrow N$ betrachten, welche die vergangene Zeit auf einen Winkel
+abbilden. Konkret sind die Funktionenfür den Göpelarm
+\begin{equation}
+r_{G}(t) = \frac{\omega \times t \times 180}{\pi}
+\end{equation}
+für das Stützrad
+\begin{equation}
+r_{S}(t) = \frac{r_{G} \times 360^{\circ}}{\alpha}
+\end{equation}.
 
 Nun sei $f: N^2 \rightarrow N^2$ eine Funktion mit
-$$f(t, \omega) = (r_{G}, r_{S})$$
+$$f(t) = (r_{G}(t), r_{S}(t))$$
 welches unsere gesuchte Funktion ist.
 
 \subsection{Matrizen}
-Die Rotationsmatrix in z-Richtung ist $R_{z} = \left[\begin{array}{ c c c c }
+Die Rotationsmatrix in z-Richtung ist
+\begin{equation}
+R_{z} = \left(\begin{array}{ c c c c }
 cos \gamma & sin \gamma & 0 & 0 \\
 -sin \gamma & cos \gamma & 0 & 0 \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
-\end{array} \right]$ für den Winkel $\gamma$ und in y-Richtung
-$R_{y} = \left[\begin{array}{ c c c c }
+\end{array} \right)
+\end{equation}
+für den Winkel $\gamma$ und in y-Richtung
+\begin{equation}
+R_{y} = \left(\begin{array}{ c c c c }
 cos \beta & 0 & -sin \beta & 0 \\
 0 & 1 & 0 & 0 \\
 sin \beta & 0 & cos \beta & 0 \\
 0 & 0 & 0 & 1
-\end{array} \right]$ für den Winkel $\beta$. Die Translation um die Länge l in
-z-Richtung wird durch den Vektor $t_{z} = \left[\begin{array}{ c c c c }
+\end{array} \right)
+\end{equation}
+für den Winkel $\beta$. Die Translation um die Länge l in
+z-Richtung wird durch den Vektor
+\begin{equation}
+t_{z} = \left(\begin{array}{ c c c c }
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 0 \\
 0 & 0 & 1 & l \\
 0 & 0 & 0 & 1
-\end{array}\right]$ erreicht.
+\end{array}\right)
+\end{equation}
+erreicht.
 
 Da sich das Rad im Kreis drehen soll, muss es als erstes um den Winkel des
 Göpelarms rotiert werden. Dann können die Translation auf und die Rotation um
