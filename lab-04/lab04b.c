@@ -9,8 +9,8 @@ double wheelrad = 1.2; /* radius of the wheel */
 double wheeldep = 0.4; /* depth of the wheel */
 size_t wheelres = 16;  /* wheel circle resolution */
 
-double goedellen = 4.5; /* length of the goedel arm */
-double goedelrad = 0.1; /* radius of the goedelarm */
+double goepellen = 4.5; /* length of the goepel arm */
+double goepelrad = 0.1; /* radius of the goepelarm */
 
 double sockrad = 0.25; /* radius of the socket */
 size_t sockres = 8;    /* socket circle resolution */
@@ -61,12 +61,9 @@ main(int argc, char *argv[])
 void
 renderinit(void)
 {
-	double circumfence;
-
 	time = 0;
 
-	circumfence = 2 * M_PI * wheelrad;
-	wheelrot = 360.0 / ((180.0 * circumfence) / (M_PI * wheelrad));
+	wheelrot = 360.0 / ((180.0 * 2.0 * M_PI * wheelrad) / (M_PI * goepellen));
 
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_COLOR_MATERIAL);
@@ -119,7 +116,7 @@ void
 drawscene(void)
 {
 	int i;
-	double angle, goedelang, wheelang;
+	double angle, goepelang, wheelang;
 
 	GLfloat ambientcolor[] = { 0.2, 0.2, 0.2, 1.0 };
 	GLfloat lightcolor[] = { 0.5, 0.5, 0.5, 1.0 };
@@ -130,7 +127,7 @@ drawscene(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	calcangles(time, rotspeed, &goedelang, &wheelang);
+	calcangles(time, rotspeed, &goepelang, &wheelang);
 
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, ambientcolor);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightcolor);
@@ -144,10 +141,10 @@ drawscene(void)
 	glColor3d(0.3, 0.1, 0.0);
 	glBegin(GL_QUADS);
 	glNormal3d(0.0, 1.0, 0.0);
-	glVertex3d(goedellen + 1, -wheelrad, -goedellen - 1);
-	glVertex3d(goedellen + 1, -wheelrad, goedellen + 1);
-	glVertex3d(-goedellen - 1, -wheelrad, goedellen + 1);
-	glVertex3d(-goedellen - 1, -wheelrad, -goedellen - 1);
+	glVertex3d(goepellen + 1, -wheelrad, -goepellen - 1);
+	glVertex3d(goepellen + 1, -wheelrad, goepellen + 1);
+	glVertex3d(-goepellen - 1, -wheelrad, goepellen + 1);
+	glVertex3d(-goepellen - 1, -wheelrad, -goepellen - 1);
 	glEnd();
 	glPopMatrix();
 
@@ -156,10 +153,10 @@ drawscene(void)
 	glColor3d(0.0, 0.6, 0.0);
 	glBegin(GL_TRIANGLE_FAN);
 	glNormal3d(0.0, 1.0, 0.0);
-	glVertex3d(0.0, goedelrad, 0.0);
+	glVertex3d(0.0, goepelrad, 0.0);
 	for (i = 0; i <= sockres; i++) {
 		angle = 2 * M_PI * (double) i / (double) sockres;
-		glVertex3d(sockrad * cos(angle), goedelrad, sockrad * sin(angle));
+		glVertex3d(sockrad * cos(angle), goepelrad, sockrad * sin(angle));
 	}
 	glEnd();
 
@@ -169,47 +166,47 @@ drawscene(void)
 		glNormal3d(cos(angle), sin(angle), 0.0);
 		angle = 2 * M_PI * (double) i / (double) sockres;
 		glVertex3d(sockrad * cos(angle), -wheelrad, sockrad * sin(angle));
-		glVertex3d(sockrad * cos(angle), goedelrad, sockrad * sin(angle));
+		glVertex3d(sockrad * cos(angle), goepelrad, sockrad * sin(angle));
 	}
 	glEnd();
 	glPopMatrix();
 
-	/* goedel arm */
+	/* goepel arm */
 	glPushMatrix();
 	//glColor3d(0.0, 0.6, 0.0);
-	glRotated(-goedelang, 0.0, 1.0, 0.0);
+	glRotated(-goepelang, 0.0, 1.0, 0.0);
 	glBegin(GL_QUADS);
 	glNormal3d(0.0, -1.0, 0.0);
-	glVertex3d(-goedelrad, -goedelrad, 0.0);
-	glVertex3d(goedelrad, -goedelrad, 0.0);
-	glVertex3d(goedelrad, -goedelrad, -goedellen);
-	glVertex3d(-goedelrad, -goedelrad, -goedellen);
+	glVertex3d(-goepelrad, -goepelrad, 0.0);
+	glVertex3d(goepelrad, -goepelrad, 0.0);
+	glVertex3d(goepelrad, -goepelrad, -goepellen);
+	glVertex3d(-goepelrad, -goepelrad, -goepellen);
 
 	glNormal3d(1.0, 0.0, 0.0);
-	glVertex3d(goedelrad, -goedelrad, 0.0);
-	glVertex3d(goedelrad, -goedelrad, -goedellen);
-	glVertex3d(goedelrad, goedelrad, -goedellen);
-	glVertex3d(goedelrad, goedelrad, 0.0);
+	glVertex3d(goepelrad, -goepelrad, 0.0);
+	glVertex3d(goepelrad, -goepelrad, -goepellen);
+	glVertex3d(goepelrad, goepelrad, -goepellen);
+	glVertex3d(goepelrad, goepelrad, 0.0);
 
 	glNormal3d(0.0, 1.0, 0.0);
-	glVertex3d(-goedelrad, goedelrad, 0.0);
-	glVertex3d(goedelrad, goedelrad, 0.0);
-	glVertex3d(goedelrad, goedelrad, -goedellen);
-	glVertex3d(-goedelrad, goedelrad, -goedellen);
+	glVertex3d(-goepelrad, goepelrad, 0.0);
+	glVertex3d(goepelrad, goepelrad, 0.0);
+	glVertex3d(goepelrad, goepelrad, -goepellen);
+	glVertex3d(-goepelrad, goepelrad, -goepellen);
 
 	glNormal3d(-1.0, 0.0, 0.0);
-	glVertex3d(-goedelrad, -goedelrad, 0.0);
-	glVertex3d(-goedelrad, -goedelrad, -goedellen);
-	glVertex3d(-goedelrad, goedelrad, -goedellen);
-	glVertex3d(-goedelrad, goedelrad, 0.0);
+	glVertex3d(-goepelrad, -goepelrad, 0.0);
+	glVertex3d(-goepelrad, -goepelrad, -goepellen);
+	glVertex3d(-goepelrad, goepelrad, -goepellen);
+	glVertex3d(-goepelrad, goepelrad, 0.0);
 	glEnd();
 	glPopMatrix();
 
 	/* wheel */
 	glPushMatrix();
 	glColor3d(0.2, 0.2, 0.2);
-	glRotated(-goedelang, 0.0, 1.0, 0.0);
-	glTranslated(0.0, 0.0, -goedellen);
+	glRotated(-goepelang, 0.0, 1.0, 0.0);
+	glTranslated(0.0, 0.0, -goepellen);
 	glRotated(-wheelang, 0.0, 0.0, 1.0);
 
 	glBegin(GL_TRIANGLE_FAN);
