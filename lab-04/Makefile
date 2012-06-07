@@ -2,7 +2,7 @@ NAME=lab04
 
 INCLUDE=
 LIBPATH=
-LIBS=-lglut -lGLU -lm
+LIBS=-lglut -lGLU -lGL -lm
 SYMBOLS=-D_XOPEN_SOURCE
 
 CC=gcc
