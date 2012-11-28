@@ -98,8 +98,8 @@ Da sich das Rad im Kreis drehen soll, muss es als erstes um den Winkel des
 Göpelarms rotiert werden. Dann können die Translation auf und die Rotation um
 die z-Achse angewendet werden. Die führt zu folgender Gleichung:
 \begin{eqnarray}
-P' & = & P \times R_{y} \times T_{z} \times R_{z} \nonumber \\
-& = & P \times \left(\begin{array}{ c c c c }
+P' & = & R_{y} \times T_{z} \times R_{z} \times P \nonumber \\
+& = & \left(\begin{array}{ c c c c }
 \mbox{cos} \beta & 0 & - \mbox{sin} \beta & 0 \\
 0 & 1 & 0 & 0 \\
 \mbox{sin} \beta & 0 & \mbox{cos} \beta & 0 \\
@@ -114,8 +114,8 @@ P' & = & P \times R_{y} \times T_{z} \times R_{z} \nonumber \\
 - \mbox{sin} \gamma & \mbox{cos} \gamma & 0 & 0 \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
-\end{array} \right) \nonumber \\
-& = & P \times \left(\begin{array}{ c c c c }
+\end{array} \right) \times P \nonumber \\
+& = & \left(\begin{array}{ c c c c }
 \mbox{cos} \beta & 0 & - \mbox{sin} \beta & - \mbox{sin} \beta \times l \\
 0 & 1 & 0 & 0 \\
 \mbox{sin} \beta & 0 & \mbox{cos} \beta & \mbox{cos} \beta \times l \\
@@ -125,8 +125,8 @@ P' & = & P \times R_{y} \times T_{z} \times R_{z} \nonumber \\
 - \mbox{sin} \gamma & \mbox{cos} \gamma & 0 & 0 \\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
-\end{array} \right) \nonumber \\
-& = & P \times \left(\begin{array}{ c c c c }
+\end{array} \right) \times P \nonumber \\
+& = & \left(\begin{array}{ c c c c }
 \mbox{cos} \beta \times \mbox{cos} \gamma &
 \mbox{cos} \beta \times \mbox{sin} \gamma &
 - \mbox{sin} \beta & - \mbox{sin} \beta \times l \\
@@ -135,7 +135,7 @@ P' & = & P \times R_{y} \times T_{z} \times R_{z} \nonumber \\
 \mbox{sin} \beta \times \mbox{sin} \gamma &
 \mbox{cos} \beta & \mbox{cos} \beta \times l \\
 0 & 0 & 0 & 1
-\end{array} \right)
+\end{array} \right) \times P
 \end{eqnarray}
 
 \end{document}
